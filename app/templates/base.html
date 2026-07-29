@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Placement Prediction System{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="{{ url_for('home') }}" class="brand">
+                <span class="brand-mark">PP</span>
+                <span class="brand-name">Placement<span class="brand-accent">.</span>Predict</span>
+            </a>
+            <nav class="site-nav">
+                <a href="{{ url_for('home') }}" class="nav-link active">Dashboard</a>
+                <a href="#how-it-works" class="nav-link">How it works</a>
+                <a href="#" class="nav-link">Model</a>
+                <a href="#" class="nav-link">About</a>
+            </nav>
+            <a href="#" class="btn btn-primary nav-cta">Run Prediction</a>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="brand-mark">PP</span>
+                <span class="brand-name">Placement<span class="brand-accent">.</span>Predict</span>
+                <p class="footer-tagline">A machine learning system for estimating campus placement outcomes.</p>
+            </div>
+            <div class="footer-meta">
+                <span class="mono-tag">MACHINE LEARNING · CAPSTONE PROJECT</span>
+                <span class="footer-copy">Built with Flask &amp; scikit-learn</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

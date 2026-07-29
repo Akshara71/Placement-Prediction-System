@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Placement Prediction System · Dashboard{% endblock %}
+
+{% block content %}
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <span class="eyebrow">STUDENT PLACEMENT ANALYTICS</span>
+                <h1 class="hero-title">Placement Prediction<br>System</h1>
+                <p class="hero-sub">
+                    Enter your academic and skill profile and our trained model estimates your
+                    likelihood of placement in seconds — with a clear breakdown of what's helping,
+                    and what's holding you back.
+                </p>
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary">Predict My Placement</a>
+                    <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+                </div>
+                <div class="hero-signals">
+                    <div class="signal">
+                        <span class="signal-value">92<span class="signal-unit">%</span></span>
+                        <span class="signal-label">Model accuracy</span>
+                    </div>
+                    <div class="signal-divider"></div>
+                    <div class="signal">
+                        <span class="signal-value">500<span class="signal-unit">+</span></span>
+                        <span class="signal-label">Student records trained</span>
+                    </div>
+                    <div class="signal-divider"></div>
+                    <div class="signal">
+                        <span class="signal-value">&lt;1<span class="signal-unit">s</span></span>
+                        <span class="signal-label">Prediction time</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="gauge-card">
+                    <span class="mono-tag gauge-tag">SAMPLE OUTPUT</span>
+                    <div class="gauge-wrap">
+                        <svg viewBox="0 0 200 200" class="gauge-svg">
+                            <circle cx="100" cy="100" r="86" class="gauge-track"/>
+                            <circle cx="100" cy="100" r="86" class="gauge-fill"/>
+                        </svg>
+                        <div class="gauge-center">
+                            <span class="gauge-percent">78<span class="gauge-percent-sign">%</span></span>
+                            <span class="gauge-caption">placement<br>likelihood</span>
+                        </div>
+                    </div>
+                    <div class="gauge-footer">
+                        <span class="gauge-status gauge-status-positive">● Likely to be placed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="strip">
+        <div class="strip-inner">
+            <p class="strip-text">
+                Predictions are generated from a classification model trained on CGPA, internships,
+                projects, certifications, backlog history, and communication skill scores —
+                every factor a real placement cell actually looks at.
+            </p>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="steps">
+        <div class="section-head">
+            <span class="eyebrow">THE PIPELINE</span>
+            <h2 class="section-title">Three steps from data to decision</h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <span class="step-number">01</span>
+                <h3 class="step-title">Enter your profile</h3>
+                <p class="step-desc">Academic scores, internships, projects, and skill certifications — a two-minute form.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-number">02</span>
+                <h3 class="step-title">Model analyzes patterns</h3>
+                <p class="step-desc">Your profile is scored against patterns learned from hundreds of past placement outcomes.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-number">03</span>
+                <h3 class="step-title">Get your prediction</h3>
+                <p class="step-desc">A clear probability score plus the top factors driving it — so you know what to improve.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="section-head">
+            <span class="eyebrow">WHY IT WORKS</span>
+            <h2 class="section-title">Built for clarity, not just a score</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">◈</div>
+                <h3 class="feature-title">Data-driven predictions</h3>
+                <p class="feature-desc">Every estimate is grounded in historical placement data, not guesswork.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">◷</div>
+                <h3 class="feature-title">Instant results</h3>
+                <p class="feature-desc">No waiting rooms. Submit your profile and get a prediction immediately.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">◫</div>
+                <h3 class="feature-title">Transparent factors</h3>
+                <p class="feature-desc">See exactly which inputs pushed your score up or down.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">◉</div>
+                <h3 class="feature-title">Private by default</h3>
+                <p class="feature-desc">Your academic data stays with your session — nothing is stored or shared.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-inner">
+            <h2 class="cta-title">Ready to see where you stand?</h2>
+            <p class="cta-sub">Takes less time than your last lab viva.</p>
+            <a href="#" class="btn btn-primary btn-large">Predict My Placement</a>
+        </div>
+    </section>
+
+{% endblock %}
