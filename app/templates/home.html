@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Placement Prediction System · Dashboard{% endblock %}
+{% block title %}Placement Prediction System · Home{% endblock %}
 
 {% block content %}
 
     <section class="hero">
         <div class="hero-inner">
-            <div class="hero-copy">
+            <div class="hero-copy" data-reveal>
                 <span class="eyebrow">STUDENT PLACEMENT ANALYTICS</span>
                 <h1 class="hero-title">Placement Prediction<br>System</h1>
                 <p class="hero-sub">
@@ -15,28 +15,28 @@
                     and what's holding you back.
                 </p>
                 <div class="hero-actions">
-                    <a href="#" class="btn btn-primary">Predict My Placement</a>
+                    <a href="{{ url_for('predict') }}" class="btn btn-primary">Predict My Placement</a>
                     <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
                 </div>
                 <div class="hero-signals">
                     <div class="signal">
-                        <span class="signal-value">92<span class="signal-unit">%</span></span>
+                        <span class="signal-value"><span data-count="92">0</span><span class="signal-unit">%</span></span>
                         <span class="signal-label">Model accuracy</span>
                     </div>
                     <div class="signal-divider"></div>
                     <div class="signal">
-                        <span class="signal-value">500<span class="signal-unit">+</span></span>
-                        <span class="signal-label">Student records trained</span>
+                        <span class="signal-value"><span data-count="500">0</span><span class="signal-unit">+</span></span>
+                        <span class="signal-label">Records trained on</span>
                     </div>
                     <div class="signal-divider"></div>
                     <div class="signal">
-                        <span class="signal-value">&lt;1<span class="signal-unit">s</span></span>
-                        <span class="signal-label">Prediction time</span>
+                        <span class="signal-value"><span data-count="6">0</span></span>
+                        <span class="signal-label">Input features used</span>
                     </div>
                 </div>
             </div>
 
-            <div class="hero-visual">
+            <div class="hero-visual" data-reveal style="transition-delay: 0.1s;">
                 <div class="gauge-card">
                     <span class="mono-tag gauge-tag">SAMPLE OUTPUT</span>
                     <div class="gauge-wrap">
@@ -57,33 +57,51 @@
         </div>
     </section>
 
-    <section class="strip">
-        <div class="strip-inner">
-            <p class="strip-text">
-                Predictions are generated from a classification model trained on CGPA, internships,
-                projects, certifications, backlog history, and communication skill scores —
-                every factor a real placement cell actually looks at.
-            </p>
+    <section id="stack" class="stack-strip">
+        <div class="stack-inner">
+            <span class="mono-tag stack-label">BUILT WITH</span>
+            <div class="stack-badges">
+                <span class="stack-badge">Python</span>
+                <span class="stack-badge">Flask</span>
+                <span class="stack-badge">scikit-learn</span>
+                <span class="stack-badge">Pandas</span>
+                <span class="stack-badge">NumPy</span>
+                <span class="stack-badge">Jinja2</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="explore-dataset" data-reveal>
+        <div class="explore-inner">
+            <div class="explore-copy">
+                <span class="eyebrow">RAW DATA</span>
+                <h2 class="section-title" style="text-align:left;">Explore the dataset</h2>
+                <p class="hero-sub" style="margin-bottom:0;">
+                    Peek at the actual records behind this model — view the first rows,
+                    last rows, or a random sample straight from the CSV.
+                </p>
+            </div>
+            <a href="{{ url_for('dataset') }}" class="btn btn-primary">View Dataset</a>
         </div>
     </section>
 
     <section id="how-it-works" class="steps">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
             <span class="eyebrow">THE PIPELINE</span>
             <h2 class="section-title">Three steps from data to decision</h2>
         </div>
         <div class="steps-grid">
-            <div class="step-card">
+            <div class="step-card" data-reveal>
                 <span class="step-number">01</span>
                 <h3 class="step-title">Enter your profile</h3>
                 <p class="step-desc">Academic scores, internships, projects, and skill certifications — a two-minute form.</p>
             </div>
-            <div class="step-card">
+            <div class="step-card" data-reveal style="transition-delay: 0.1s;">
                 <span class="step-number">02</span>
                 <h3 class="step-title">Model analyzes patterns</h3>
                 <p class="step-desc">Your profile is scored against patterns learned from hundreds of past placement outcomes.</p>
             </div>
-            <div class="step-card">
+            <div class="step-card" data-reveal style="transition-delay: 0.2s;">
                 <span class="step-number">03</span>
                 <h3 class="step-title">Get your prediction</h3>
                 <p class="step-desc">A clear probability score plus the top factors driving it — so you know what to improve.</p>
@@ -91,28 +109,28 @@
         </div>
     </section>
 
-    <section class="features">
-        <div class="section-head">
+    <section id="features" class="features">
+        <div class="section-head" data-reveal>
             <span class="eyebrow">WHY IT WORKS</span>
             <h2 class="section-title">Built for clarity, not just a score</h2>
         </div>
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card" data-reveal>
                 <div class="feature-icon">◈</div>
                 <h3 class="feature-title">Data-driven predictions</h3>
                 <p class="feature-desc">Every estimate is grounded in historical placement data, not guesswork.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" data-reveal style="transition-delay: 0.08s;">
                 <div class="feature-icon">◷</div>
                 <h3 class="feature-title">Instant results</h3>
                 <p class="feature-desc">No waiting rooms. Submit your profile and get a prediction immediately.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" data-reveal style="transition-delay: 0.16s;">
                 <div class="feature-icon">◫</div>
                 <h3 class="feature-title">Transparent factors</h3>
                 <p class="feature-desc">See exactly which inputs pushed your score up or down.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" data-reveal style="transition-delay: 0.24s;">
                 <div class="feature-icon">◉</div>
                 <h3 class="feature-title">Private by default</h3>
                 <p class="feature-desc">Your academic data stays with your session — nothing is stored or shared.</p>
@@ -121,10 +139,10 @@
     </section>
 
     <section class="cta">
-        <div class="cta-inner">
+        <div class="cta-inner" data-reveal>
             <h2 class="cta-title">Ready to see where you stand?</h2>
             <p class="cta-sub">Takes less time than your last lab viva.</p>
-            <a href="#" class="btn btn-primary btn-large">Predict My Placement</a>
+            <a href="{{ url_for('predict') }}" class="btn btn-primary btn-large">Predict My Placement</a>
         </div>
     </section>
 

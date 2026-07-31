@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Placement Prediction System · Dataset{% endblock %}
+
+{% block content %}
+
+    <section class="section-head" data-reveal>
+        <span class="eyebrow">RAW DATA</span>
+        <h2 class="section-title">Dataset Explorer</h2>
+    </section>
+
+    <section class="dataset-summary" data-reveal>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <span class="summary-value">{{ summary.rows }}</span>
+                <span class="summary-label">Total Records</span>
+            </div>
+            <div class="summary-card">
+                <span class="summary-value">{{ summary.columns }}</span>
+                <span class="summary-label">Total Columns</span>
+            </div>
+            <div class="summary-card">
+                <span class="summary-value">{{ summary.target }}</span>
+                <span class="summary-label">Target Variable</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="dataset-preview" data-reveal>
+
+        <form method="GET" action="{{ url_for('dataset') }}" class="row-selector">
+            <div class="selector-group">
+                <label class="selector-label" for="view">Show</label>
+                <select name="view" id="view" class="selector-input">
+                    <option value="head" {% if view == 'head' %}selected{% endif %}>First rows</option>
+                    <option value="tail" {% if view == 'tail' %}selected{% endif %}>Last rows</option>
+                    <option value="random" {% if view == 'random' %}selected{% endif %}>Random rows</option>
+                </select>
+            </div>
+            <div class="selector-group">
+                <label class="selector-label" for="n">Rows</label>
+                <input type="number" name="n" id="n" min="1" max="{{ summary.rows }}" value="{{ n }}" class="selector-input">
+            </div>
+            <button type="submit" class="btn btn-primary">Update view</button>
+        </form>
+
+        <div class="quick-links">
+            <a href="{{ url_for('dataset', view='head', n=5) }}" class="stack-badge {% if view=='head' and n==5 %}active{% endif %}">First 5</a>
+            <a href="{{ url_for('dataset', view='tail', n=5) }}" class="stack-badge {% if view=='tail' and n==5 %}active{% endif %}">Last 5</a>
+            <a href="{{ url_for('dataset', view='random', n=5) }}" class="stack-badge {% if view=='random' and n==5 %}active{% endif %}">Random 5</a>
+            <a href="{{ url_for('dataset', view='head', n=10) }}" class="stack-badge {% if view=='head' and n==10 %}active{% endif %}">First 10</a>
+        </div>
+
+        <h3 class="preview-title">
+            {% if view == 'head' %}Showing first {{ n }} records
+            {% elif view == 'tail' %}Showing last {{ n }} records
+            {% else %}Showing {{ n }} random records
+            {% endif %}
+        </h3>
+
+        <div class="table-wrap">
+            {{ rows_html | safe }}
+        </div>
+
+    </section>
+
+{% endblock %}

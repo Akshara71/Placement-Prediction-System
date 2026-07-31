@@ -11,6 +11,9 @@
 </head>
 <body>
 
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+
     <header class="site-header">
         <div class="header-inner">
             <a href="{{ url_for('home') }}" class="brand">
@@ -18,12 +21,11 @@
                 <span class="brand-name">Placement<span class="brand-accent">.</span>Predict</span>
             </a>
             <nav class="site-nav">
-                <a href="{{ url_for('home') }}" class="nav-link active">Dashboard</a>
                 <a href="#how-it-works" class="nav-link">How it works</a>
-                <a href="#" class="nav-link">Model</a>
-                <a href="#" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#stack" class="nav-link">Tech stack</a>
             </nav>
-            <a href="#" class="btn btn-primary nav-cta">Run Prediction</a>
+            <a href="{{ url_for('predict') }}" class="btn btn-primary nav-cta">Run Prediction</a>
         </div>
     </header>
 
@@ -44,6 +46,43 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Scroll-reveal: fade/slide elements in as they enter the viewport
+        const revealEls = document.querySelectorAll('[data-reveal]');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        // Animated count-up for stat numbers
+        const counters = document.querySelectorAll('[data-count]');
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const target = parseFloat(el.dataset.count);
+                const decimals = el.dataset.count.includes('.') ? 1 : 0;
+                const duration = 1200;
+                const start = performance.now();
+                function tick(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = (target * eased).toFixed(decimals);
+                    if (progress < 1) requestAnimationFrame(tick);
+                    else el.textContent = target.toFixed(decimals);
+                }
+                requestAnimationFrame(tick);
+                countObserver.unobserve(el);
+            });
+        }, { threshold: 0.4 });
+        counters.forEach(el => countObserver.observe(el));
+    </script>
 
 </body>
 </html>
