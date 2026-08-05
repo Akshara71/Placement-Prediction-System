@@ -670,6 +670,7 @@ a {
     .hero-actions { flex-direction: column; }
     .stack-inner { flex-direction: column; align-items: flex-start; }
 }
+
 /* ============================================================
    EXPLORE DATASET SECTION (home page)
    ============================================================ */
@@ -845,4 +846,55 @@ a {
 @media (max-width: 700px) {
     .summary-grid { grid-template-columns: 1fr; }
     .explore-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* ============================================================
+   EDA PAGE
+   ============================================================ */
+
+.eda-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.chart-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -22px rgba(19, 28, 43, 0.22);
+    border-color: var(--accent-cyan);
+}
+
+.chart-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.chart-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.chart-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-soft);
+    display: block;
+}
+
+@media (max-width: 800px) {
+    .eda-grid { grid-template-columns: 1fr; }
 }

@@ -14,13 +14,12 @@ def dataset():
     df = load_data()
     summary = get_summary(df)
 
-    # Read the user's choice from the URL, e.g. /dataset?view=random&n=8
     view = request.args.get('view', 'head')
     try:
         n = int(request.args.get('n', 5))
     except ValueError:
         n = 5
-    n = max(1, min(n, summary['rows']))  # keep n within valid range
+    n = max(1, min(n, summary['rows']))
 
     if view == 'tail':
         rows_df = df.tail(n)
@@ -37,6 +36,11 @@ def dataset():
         view=view,
         n=n
     )
+
+
+@app.route('/eda')
+def eda():
+    return render_template("eda.html")
 
 
 @app.route('/predict')
