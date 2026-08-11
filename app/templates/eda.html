@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Placement Prediction System · EDA{% endblock %}
+
+{% block content %}
+
+    <section class="section-head" data-reveal>
+        <span class="eyebrow">EXPLORATORY DATA ANALYSIS</span>
+        <h2 class="section-title">What the data actually shows</h2>
+    </section>
+
+    <section class="eda-grid" data-reveal>
+
+        <div class="chart-card">
+            <h3 class="chart-title">Placement Status Distribution</h3>
+            <p class="chart-desc">Class balance between placed and not-placed students.</p>
+            <img src="{{ url_for('static', filename='charts/bargraph.png') }}" alt="Placement status bar chart" class="chart-img">
+        </div>
+
+        <div class="chart-card">
+            <h3 class="chart-title">CGPA Distribution</h3>
+            <p class="chart-desc">Histogram showing how CGPA is spread across all students.</p>
+            <img src="{{ url_for('static', filename='charts/histogram.png') }}" alt="CGPA histogram" class="chart-img">
+        </div>
+
+        <div class="chart-card">
+            <h3 class="chart-title">Gender Distribution</h3>
+            <p class="chart-desc">Proportional split of students by gender.</p>
+            <img src="{{ url_for('static', filename='charts/piechart.png') }}" alt="Gender distribution pie chart" class="chart-img">
+        </div>
+
+        <div class="chart-card">
+            <h3 class="chart-title">CGPA vs Aptitude Test Score</h3>
+            <p class="chart-desc">Checking whether stronger academics line up with higher aptitude scores.</p>
+            <img src="{{ url_for('static', filename='charts/cgpa_aptitudescore_scatter.png') }}" alt="CGPA vs aptitude score scatter plot" class="chart-img">
+        </div>
+
+        <div class="chart-card">
+            <h3 class="chart-title">CGPA by Placement Outcome</h3>
+            <p class="chart-desc">Boxplot comparing CGPA spread between placed and not-placed students.</p>
+            <img src="{{ url_for('static', filename='charts/CGPA_PlacementStatus_boxplot.png') }}" alt="CGPA vs placement status boxplot" class="chart-img">
+        </div>
+
+        <div class="chart-card">
+            <h3 class="chart-title">Correlation Heatmap</h3>
+            <p class="chart-desc">How CGPA, aptitude score, and placement status relate to each other.</p>
+            <img src="{{ url_for('static', filename='charts/correlationmatrix.png') }}" alt="Correlation heatmap" class="chart-img">
+        </div>
+
+    </section>
+
+{% endblock %}
