@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Placement Prediction System · Preprocessing{% endblock %}
+
+{% block content %}
+
+    <section class="section-head" data-reveal>
+        <span class="eyebrow">DATA PREPROCESSING</span>
+        <h2 class="section-title">Preparing the data for modeling</h2>
+    </section>
+
+    <section class="dataset-summary" data-reveal>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <span class="summary-value">{{ train_shape[0] }} × {{ train_shape[1] }}</span>
+                <span class="summary-label">Training set shape</span>
+            </div>
+            <div class="summary-card">
+                <span class="summary-value">{{ test_shape[0] }} × {{ test_shape[1] }}</span>
+                <span class="summary-label">Testing set shape</span>
+            </div>
+            <div class="summary-card">
+                <span class="summary-value">80 / 20</span>
+                <span class="summary-label">Train / Test split</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-lists" data-reveal>
+        <div class="feature-list-card">
+            <h3 class="preview-title">Numerical Features ({{ numerical_features|length }})</h3>
+            <div class="feature-tags">
+                {% for feat in numerical_features %}
+                <span class="stack-badge">{{ feat }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="feature-list-card">
+            <h3 class="preview-title">Categorical Features ({{ categorical_features|length }})</h3>
+            <div class="feature-tags">
+                {% for feat in categorical_features %}
+                <span class="stack-badge">{{ feat }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="dataset-preview" data-reveal>
+        <h3 class="preview-title">Processed Training Data (preview)</h3>
+        <p class="chart-desc" style="margin-bottom:16px;">
+            Numerical columns standardized (mean 0, std 1) and categorical columns one-hot encoded.
+        </p>
+        <div class="table-wrap">
+            {{ train_preview | safe }}
+        </div>
+    </section>
+
+    <section class="dataset-preview" data-reveal>
+        <h3 class="preview-title">Processed Testing Data (preview)</h3>
+        <div class="table-wrap">
+            {{ test_preview | safe }}
+        </div>
+    </section>
+
+{% endblock %}

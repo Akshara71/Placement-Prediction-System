@@ -1,5 +1,11 @@
 from flask import Flask, render_template, request
 from src.data.load_data import load_data, get_summary
+from src.data.preprocess import (
+    split_data,
+    identify_features,
+    standardize_data,
+    one_hot_encode_data
+)
 
 app = Flask(__name__)
 
@@ -41,6 +47,25 @@ def dataset():
 @app.route('/eda')
 def eda():
     return render_template("eda.html")
+
+
+@app.route('/preprocess')
+def preprocess():
+    df = load_data()
+    X_train, X_test, y_train, y_test = split_data(df)
+    numerical_features, categorical_features = identify_features(X_train)
+    X_train, X_test, scaler = standardize_data(X_train, X_test, numerical_features)
+    X_train, X_test, encoder = one_hot_encode_data(X_train, X_test, categorical_features)
+
+    return render_template(
+        "preprocess.html",
+        numerical_features=numerical_features,
+        categorical_features=categorical_features,
+        train_shape=X_train.shape,
+        test_shape=X_test.shape,
+        train_preview=X_train.head().to_html(index=False, classes="data-table"),
+        test_preview=X_test.head().to_html(index=False, classes="data-table")
+    )
 
 
 @app.route('/predict')
