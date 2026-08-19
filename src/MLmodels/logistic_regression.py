@@ -2,6 +2,8 @@ import pandas as pd
 import joblib
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, mean_squared_error
+import numpy as np
 
 
 def load_preprocessed_data():
@@ -43,6 +45,14 @@ def evaluate_model(model, X_test, y_test):
 
     print("\nAccuracy:")
     print(model.score(X_test, y_test))
+
+    mse = mean_squared_error(y_test, y_pred)
+    print("\nMean Squared Error (MSE):")
+    print(mse)
+
+    rmse = np.sqrt(mse)
+    print("\nRoot Mean Squared Error (RMSE):")
+    print(rmse)
 
     print("\nClassification Report:")
     print(classification_report(y_test, y_pred))
